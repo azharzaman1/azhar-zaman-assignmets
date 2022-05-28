@@ -42,6 +42,7 @@ body {
 
 .table {
   border-collapse: collapse;
+  text-align: left;
 }
 
 .table > caption {
@@ -52,13 +53,9 @@ body {
   font-size: 22px;
 }
 
-.table thead tr th {
-  padding: 1rem 8px;
-}
-
 .table thead tr th,
 .table tr td {
-  padding: 10px;
+  padding: 1rem 8px;
   border: 1px solid var(--surface-clr-1);
   margin: 0;
   color: var(--text-clr);
