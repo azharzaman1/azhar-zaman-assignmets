@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FORM - Everlytics assignment</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="form-section">
+      <div class="form-container">
+        <div class="form-header">
+          <h3>EVERLYTICS - FORM</h3>
+          <p>Please fill in details and hit Create</p>
+        </div>
+        <form class="form" id="form">
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="" class="label">Select your source</label>
+            </div>
+            <div class="form-input-input">
+              <span>Google Cloud Storage</span>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="pipline-name-input" class="form-label"
+                >Provide a name for pipeline</label
+              >
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="text"
+                class="form-input"
+                id="pipline-name-input"
+                placeholder="e.g., cust_shop_energy_gateway001"
+              />
+              <div class="form-input-info">
+                <span id="pipline-name-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="project-id-input" class="label"
+                >GCS project name</label
+              >
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="text"
+                class="form-input"
+                id="project-id-input"
+                placeholder="project-id"
+              />
+              <div class="form-input-info">
+                <span id="project-id-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="bucket-name-input" class="label"
+                >GCS bucket name</label
+              >
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="text"
+                class="form-input"
+                id="bucket-name-input"
+                placeholder="gs://your-bucket"
+              />
+              <div class="form-input-info">
+                <span id="bucket-name-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="cloud-storage-files-input" class="label"
+                >Input Cloud Storage File(s)</label
+              >
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="text"
+                class="form-input"
+                id="cloud-storage-files-input"
+                placeholder="GCS location of your files"
+              />
+              <div class="form-input-info">
+                <span class="input-guide"
+                  >Example: gs://your-bucket/your-files/01.csv</span
+                >
+                <span id="cloud-storage-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="credentials-input" class="label"
+                >GCS credentials</label
+              >
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="text"
+                class="form-input"
+                id="credentials-input"
+              />
+              <div class="form-input-info">
+                <span id="credentials-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container">
+            <div class="form-input-label">
+              <label for="run-interval-input" class="label">Run Every</label>
+            </div>
+            <div class="form-input-input">
+              <input
+                required
+                minlength="5"
+                type="number"
+                class="form-input"
+                id="run-interval-input"
+                placeholder="(in minutes)"
+              />
+              <div class="form-input-info">
+                <span id="run-interval-error-id" class="input-error"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-input-container form-actions">
+            <div class="form-actions-left">
+              <input
+                type="submit"
+                value="Create"
+                class="form-action-button postive"
+              />
+            </div>
+            <div class="form-actions-right">
+              <span
+                role="button"
+                onclick="ressetForm()"
+                class="form-action-button negative"
+              >
+                Cancel
+              </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

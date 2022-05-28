@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Roboto:wght@300;400&display=swap");
+
+:root {
+  --text-clr: #334155;
+  --text-light-clr: #94a3b8;
+  --background-clr: #f8fafc;
+  --background-contrast-clr: white;
+  --surface-clr-1: #e2e8f0;
+  --primary-clr: #22c55e;
+  --primary-light-clr: #4ade80;
+
+  --error-clr: #ef4444;
+
+  --primary-font: "Inter", "Roboto", sans-serif;
+  --secondary-font: "Roboto", "Inter", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Roboto", sans-serif;
+  background-color: #f8fafc;
+  color: var(--text-clr);
+  font-size: 14px;
+}
+
+.table-section {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-container {
+  width: 90%;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table > caption {
+  text-align: left;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  color: var(--text-clr);
+  font-size: 22px;
+}
+
+.table thead tr th {
+  padding: 1rem 8px;
+}
+
+.table thead tr th,
+.table tr td {
+  padding: 10px;
+  border: 1px solid var(--surface-clr-1);
+  margin: 0;
+  color: var(--text-clr);
+}
+
+.table thead tr th,
+.table tbody tr td:first-child {
+  font-weight: 700;
+}
+
+.table tbody tr {
+  background-color: white;
+}
