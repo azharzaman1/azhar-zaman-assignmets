@@ -1,13 +1,3 @@
-// defaults
-
-const defaultErrorMessage = `This field can only use these special characters "_", "-", "+", but cannot start with them.`;
-
-const defaultFieldValidationsRegexPattern =
-  /^[a-zA-Z0-9]+(?:[-_+][a-zA-Z0-9]+)*$/;
-// this pattern validates
-// ** value does not start with - _ +
-// ** no special characters other than - _ +
-
 // targets
 const form = document.getElementById("form");
 const pipelineNameInput = document.getElementById("pipline-name-input");
@@ -19,37 +9,33 @@ const cloudStorageFilesInput = document.getElementById(
 const credentialsInput = document.getElementById("credentials-input");
 const runIntervalInput = document.getElementById("run-interval-input");
 
-// form submission handler
+// form submission handling
 form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(e) {
   // to prevent default reloading behavior after from submission
   e.preventDefault();
 
-  // asuming every field is not empty and has min 5 characters
-  // now compare with regex pattern to exclude special characters other than - _ +
-  // make sure value does not start with - _ +
-
-  //   validating form fields against default regex pattern defined at start of script
   const piplineNameIsValid = validator(pipelineNameInput, {
     errorID: "pipline-name-error-id",
-  });
-
-  const projectIdIsValid = validator(projectIdInput, {
-    errorID: "project-id-error-id",
-  });
-
-  const bucketNameIsValid = validator(bucketNameInput, {
-    errorID: "bucket-name-error-id",
-  });
-
-  const cloudStorageIsValid = validator(cloudStorageFilesInput, {
-    errorID: "cloud-storage-error-id",
+    pattern: /^[a-zA-Z0-9]+(?:[-_+ ][a-zA-Z0-9]+)*$/, // cannot start with - _ +
+    errorMessage: 'This field cannot start with "-", "_", "+"',
   });
 
   const credentialsAreValid = validator(credentialsInput, {
     errorID: "credentials-error-id",
+    pattern: /^[a-zA-Z0-9]+(?:[-_+ ][a-zA-Z0-9]+)*$/, // cannot start with - _ +
+    errorMessage: 'This field cannot start with "-", "_", "+"',
   });
+
+  const projectIdIsValid = validator(projectIdInput, {
+    errorID: "project-id-error-id",
+    pattern: /^[a-zA-Z0-9]+(?:[-_+ ][a-zA-Z0-9]+)*$/, // cannot start with - _ +
+    errorMessage: 'This field cannot start with "-", "_", "+"',
+  });
+
+  const bucketNameIsValid = true; // as bucket name can have special characters
+  const cloudStorageIsValid = true; // as bucket name can have special characters
 
   if (
     piplineNameIsValid &&
@@ -76,29 +62,22 @@ function onFormSubmit(e) {
 const validator = (input, options) => {
   const { pattern, errorID, errorMessage } = options;
 
-  // if individual errorMessage for field was provided then that will be displayed
-  // otherwise this default errorMessage
-  const errorMsg = errorMessage || defaultErrorMessage;
-
-  // if individual regex pattern for field was provided then that will be checked
-  // otherwise the default pattern
-  const regexPattern = pattern || defaultFieldValidationsRegexPattern;
-
-  const isValid = regexPattern.test(input.value);
+  const isValid = pattern.test(input.value);
 
   if (!isValid) {
-    // if field is not valid then show errorMsg
+    // if field is not valid then show errorMessage
     if (document.getElementById(errorID)) {
-      document.getElementById(errorID).textContent = errorMsg;
+      document.getElementById(errorID).textContent = errorMessage;
     }
   } else {
-    //   if valid remove previous error message [if any]
+    // if valid remove previous error message [if any]
     document.getElementById(errorID).textContent = "";
   }
 
   return isValid;
 };
 
+// reset form on click cancel
 function ressetForm() {
   pipelineNameInput.value = "";
   projectIdInput.value = "";
